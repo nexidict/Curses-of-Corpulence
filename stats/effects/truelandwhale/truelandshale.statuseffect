@@ -1,0 +1,9 @@
+{
+    "name": "truelandwhale",
+    "scripts": [
+        "truelandwhale.lua"
+    ],
+    "defaultDuration": 100,
+    "label": "Cursed",
+    "icon": "/interface/statuses/starpoundssize/starpounds.png"
+}

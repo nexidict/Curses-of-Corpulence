@@ -1,0 +1,9 @@
+[
+    {
+        "op": "add",
+        "path": "/panes/curseofcorpulence",
+        "value": {
+            "curses": "/interface/scripted/starpounds/curses/curses.ui"
+        }
+    }
+]

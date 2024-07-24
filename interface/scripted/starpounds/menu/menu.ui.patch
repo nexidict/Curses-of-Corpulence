@@ -1,0 +1,27 @@
+[
+    {
+        "op": "replace",
+        "path": "/size",
+        "value": [240, 70]
+    },
+    {
+        "op": "add",
+        "path": "/scripts/-",
+        "value": "menucurses.lua"
+    },
+    {
+        "op": "replace",
+        "path": "/children/0/children/1",
+        "value": [
+            "spacer",
+            {"type": "iconButton", "id": "skills", "toolTip": "Skills", "image" : "skills.png", "hoverImage" : "skills.png", "pressImage" : "skills.png?border=1;00000000;00000000?crop=1;2;49;35"},
+            "spacer",
+            {"type": "iconButton", "id": "accessories", "toolTip": "Accessories", "image" : "accessories.png", "hoverImage" : "accessories.png", "pressImage" : "accessories.png?border=1;00000000;00000000?crop=1;2;49;35"},
+            "spacer",
+            {"type": "iconButton", "id": "curses", "toolTip": "Curses", "image" : "curses.png", "hoverImage" : "curses.png", "pressImage" : "curses.png?border=1;00000000;00000000?crop=1;2;49;35"},
+            "spacer",
+            {"type": "iconButton", "id": "options", "toolTip": "Options", "image" : "options.png", "hoverImage" : "options.png", "pressImage" : "options.png?border=1;00000000;00000000?crop=1;2;49;35"},
+            "spacer"
+        ]
+    }
+]

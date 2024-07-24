@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0",
+    "author": "^#F2C25B;Nexidict",
+    "description": "Addon for the ShyDispatch's and LittleVulpine's Starpounds mod!\n\nYou can now get cursed with permanent or temporary buffs and debuffs!",
+    "name": "curseofcorpulence",
+    "friendlyName": "Curses of Corpulence",
+    "includes": ["starpounds"],
+    "priority": 800
+}

@@ -1,0 +1,9 @@
+{
+	"name": "cursed",
+	"scripts": [
+		"cursedstack.lua"
+	],
+	"defaultDuration": 100,
+	"label": "Cursed",
+	"icon": "/interface/statuses/cursedstack/cursedstack1.png"
+}
