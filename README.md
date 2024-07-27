@@ -13,7 +13,3 @@ With this addon I was hoping to try and add some spice to the overall gameplay b
 Accessories, are items which grant you different statistics boosts. You can choose these manually, allowing you to dynamically change your playstyle and preferences based on what you like most.
 
 Curses on the other hand, are sets of effects which can vary the gameplay in different ways. You *can't* choose these manually, as these effects are inflicted on you by either enemies' attacks or kills. However, you'll be able to remove them thanks to an NPC, which can be found in the Hog Diner.
-
-## Contributions
-
-I'd love to expand this addon as time goes on, and as content gets added to Starpounds. If you'd like to suggest some curses (and see if they are doable or not), please feel free to do so. If you are expert and you're interested in contributing, I am soon going to make this addon fully Open Source, so feel free to fork, add and propose some changes.

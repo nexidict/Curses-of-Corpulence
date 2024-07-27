@@ -1,0 +1,11 @@
+[
+    {
+        "op": "add",
+        "path": "/tabs/-",
+        "value": {
+            "id": "curses",
+            "description": "Curses Options",
+            "icon": "curses.png"
+        }
+    }
+]

@@ -4,6 +4,7 @@ starPounds = getmetatable ''.starPounds
 
 function init()
     tabs = root.assetJson("/scripts/corpulence/corpulence_options.config:tabs")
+    curses = root.assetJson("/scripts/corpulence/corpulence_curses.config:curses")
 
     if starPounds then
         populateTabs()
@@ -20,11 +21,41 @@ function update()
 end
 
 function populateTabs()
-    local firstTab = tabField:newTab(tabField.data.activeTab)
+    local firstTab = nil
+
+    for _, tab in ipairs(tabs) do
+        tab.title = " "
+        tab.icon = string.format("icons/tabs/%s.png", tab.id)
+        tab.contents = copy(tabField.data.templateTab)
+        tab.contents[2].children[2].text = tab.friendlyName
+        tab.contents[2].children[3].id = string.format("panel_%s", tab.id)
+
+        local newTab = tabField:newTab(tab)
+
+        if not firstTab then
+            firstTab = newTab
+        end
+    end
+    firstTab:select()
+
+    --[[ local firstTab = tabField:newTab(tabField.data.activeTab)
     tabField:newTab(tabField.data.codexTab)
     tabField:newTab(tabField.data.optionsTab)
     
     firstTab:select()
+
+    -- Maybe move this in another function
+    for curseIndex, curse in ipairs(curses) do
+        local curseWidget = {
+            type = "panel", style = "concave", expandMode = {1, 0}, children = {
+                { type = "label", text = curse.friendlyName }
+            }
+        }
+
+        if _ENV["panel_codex"] then
+            _ENV["panel_codex"]:addChild(curseWidget)
+        end
+    end ]]
 end
 
 function weightDecrease:onClick()

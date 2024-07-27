@@ -16,70 +16,27 @@
         "tabWidth": 18,
         "tabs": [],
         "data": {
-          "activeTab": {
-            "title": " ",
-            "id": "active",
-            "icon": "active.png",
-            "contents": [
-              { "mode": "horizontal" },
-              { "type": "panel", "style": "convex", "children": [
-                  1,
-                  {
-                    "type": "label",
-                    "align": "center",
-                    "text": "Active curses"
-                  },
-                  {
-                    "type": "panel",
-                    "style": "concave",
-                    "scrollDirections": [0, 1],
-                    "scrollBars": true,
-                    "thumbScrolling": true,
-                    "children": []
-                  }
-                ]
-              },
-              {"type": "panel", "style": "convex", "children": [
+          "templateTab": [
+            { "mode": "horizontal" },
+            { "type": "panel", "style": "convex", "children": [
+                1,
+                {
+                  "type": "label",
+                  "align": "center"
+                },
+                {
+                  "type": "scrollArea",
+                  "scrollDirections": [0, 1],
+                  "scrollBars": true,
+                  "thumbScrolling": true,
+                  "children": []
+                }
+              ]
+            },
+            {"type": "panel", "style": "convex", "children": [
 
-              ]}
-            ]
-          },
-          "codexTab": {
-            "title": " ",
-            "id": "codex",
-            "icon": "codex.png",
-            "contents": [
-              { "mode": "horizontal" },
-              { "type": "panel", "style": "convex", "children": [
-                  1,
-                  {
-                    "type": "label",
-                    "align": "center",
-                    "text": "Codex"
-                  },
-                  {
-                    "type": "panel",
-                    "style": "concave",
-                    "scrollDirections": [0, 1],
-                    "scrollBars": true,
-                    "thumbScrolling": true,
-                    "children": []
-                  }
-                ]
-              },
-              {"type": "panel", "style": "convex", "children": [
-
-              ]}
-            ]
-          },
-          "optionsTab": {
-            "title": " ",
-            "id": "options",
-            "icon": "options.png",
-            "contents": [
-
-            ]
-          }
+            ]}
+          ]
         }
       }
     ],
