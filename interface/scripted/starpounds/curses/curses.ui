@@ -25,6 +25,7 @@
                   "align": "center"
                 },
                 {
+                  "id": "listPanel",
                   "type": "scrollArea",
                   "scrollDirections": [0, 1],
                   "scrollBars": true,

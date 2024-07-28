@@ -7,7 +7,7 @@ function init()
     curses = root.assetJson("/scripts/corpulence/corpulence_curses.config")
 
     if starPounds then
-        createTabs()
+        buildTabs()
     end
 end
 
@@ -20,7 +20,7 @@ function update()
     end
 end
 
-function createTabs()
+function buildTabs()
     local firstTab = nil
 
     for _, tab in ipairs(tabs) do
@@ -37,24 +37,28 @@ function createTabs()
         end
     end
     firstTab:select()
+
+    populateCodexTab()
 end
 
 function populateCodexTab()
-    --[[ for curseIndex, curse in ipairs(curses) do
-        local curseWidget = {
-            type = "panel", style = "concave", expandMode = {1, 0}, children = {
-                { type = "label", text = curse.friendlyName }
-            }
-        }
-
+    for curseKey, curse in pairs(curses) do
+        sb.logInfo("Loop")
         if _ENV["panel_codex"] then
-            _ENV["panel_codex"]:addChild(curseWidget)
+            _ENV["panel_codex"]:addChild(makeCurseWidget(curse))
+            sb.logInfo("Added")
         end
-    end ]]
+    end
 end
 
-function createCurseWidget()
+function makeCurseWidget(curse)
+    local curseWidget = {
+        type = "panel", style = "concave", expandMode = {1, 0}, children = {
+            { type = "label", text = curse.friendlyName }
+        }
+    }
 
+    return curseWidget
 end
 
 function selectCurse()
