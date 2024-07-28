@@ -7,7 +7,7 @@
     {
         "op": "add",
         "path": "/scripts/-",
-        "value": "menucurses.lua"
+        "value": "cursesMenu.lua"
     },
     {
         "op": "replace",

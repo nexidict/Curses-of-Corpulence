@@ -7,5 +7,65 @@
             "description": "Curses Options",
             "icon": "curses.png"
         }
+    },
+    {
+        "op": "add",
+        "path": "/options/-",
+        "value": {
+            "name": "disableCurseAmount",
+            "pretty": "^#ed7272;Disable Curse Indicator",
+            "description": "Disables the curse amount indicator from being shown in the status bar.",
+            "tab": "curses"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/options/-",
+        "value": {
+            "name": "disableCurseStatuses",
+            "pretty": "^#ed7272;Disable Curses Statuses",
+            "description": "Disables the curses statuses from being shown in the status bar.",
+            "tab": "curses"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/options/-",
+        "value": {
+            "name": "syncPreferences",
+            "pretty": "^#ccbbff;Sync Preferences",
+            "description": "Syncs preferences based off of any choice in other menus.",
+            "tab": "curses"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/options/-",
+        "value": {
+            "name": "disableWeightCurses",
+            "pretty": "^#1a87ed;Disable Weight Curses",
+            "description": "Prevents you from receiving any Weight curses.\n^gray;Disables all currently active Weight curses.",
+            "tab": "curses"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/options/-",
+        "value": {
+            "name": "disableBloatingCurses",
+            "pretty": "^#f96aa6;Disable Bloating Curses",
+            "description": "Prevents you from receiving any Bloating curses.\n^gray;Disables all currently active Bloating curses.",
+            "tab": "curses"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/options/-",
+        "value": {
+            "name": "disableVoreCurses",
+            "pretty": "^#cc164a;Disable Vore Curses",
+            "description": "Prevents you from receiving any Vore curses.\n^gray;Disables all currently active Vore curses.",
+            "tab": "curses"
+        }
     }
-]
+]        
