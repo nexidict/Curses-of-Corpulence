@@ -53,7 +53,10 @@ end
 
 function makeCurseWidget(curse)
     local curseWidget = {
-        type = "panel", style = "concave", expandMode = {1, 0}, children = {
+        type = "listItem",
+        selectionGroup = "codex",
+        size = {0, 20},
+        children = {
             { type = "label", text = curse.friendlyName }
         }
     }

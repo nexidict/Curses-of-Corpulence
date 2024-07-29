@@ -1,6 +1,6 @@
 {
   "style": "window",
-  "size": [300, 230],
+  "size": [320, 230],
   "title": "Curses",
   "icon": "icon.png",
   "accentColor": "8866ff",
@@ -18,18 +18,31 @@
         "data": {
           "templateTab": [
             { "mode": "horizontal" },
-            { "type": "panel", "style": "convex", "children": [
-                1,
+            { 
+              "type": "layout",
+              "mode": "manual",
+              "size": [149, 207],
+              "children": [
                 {
-                  "type": "label",
-                  "align": "center"
+                  "type": "image",
+                  "noAutoCrop": true,
+                  "file": "leftPanel.png"
                 },
                 {
-                  "id": "listPanel",
+                  "text": "Panel Title",
+                  "type": "label",
+                  "align": "center",
+                  "size": [149, 9],
+                  "position": [0, 4]
+                },
+                {
+                  "id": "panel",
                   "type": "scrollArea",
                   "scrollDirections": [0, 1],
                   "scrollBars": true,
                   "thumbScrolling": true,
+                  "size": [145, 179],
+                  "position": [2, 16],
                   "children": []
                 }
               ]
