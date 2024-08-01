@@ -43,21 +43,20 @@ end
 
 function populateCodexTab()
     for curseKey, curse in pairs(curses) do
-        sb.logInfo("Loop")
+        sb.logInfo("Loop: adding "..curseKey)
         if _ENV["panel_codex"] then
-            _ENV["panel_codex"]:addChild(makeCurseWidget(curse))
-            sb.logInfo("Added")
+            _ENV["panel_codex"]:addChild(makeCurseWidget(curseKey, curse))
+            sb.logInfo(curseKey.." added")
         end
     end
 end
 
-function makeCurseWidget(curse)
+function makeCurseWidget(curseKey, curse)
     local curseWidget = {
-        type = "listItem",
-        selectionGroup = "codex",
-        size = {0, 20},
-        children = {
-            { type = "label", text = curse.friendlyName }
+        type = "layout", size = {145, 20}, mode = "manual", children = {
+            { id = string.format("%sCurse_back", curseKey), type = "image", noAutoCrop = true, position = {0, 0}, file = "item.png" },
+            { id = string.format("%sCurse_name", curseKey), type = "label", position = {22, 6}, size = {117, 9}, text = curse.friendlyName },
+            { id = string.format("%sCurse_icon", curseKey), type = "image", noAutoCrop = true, position = {2, 2}, file =  "icons/curses/placeholder.png" }
         }
     }
 
