@@ -3,12 +3,23 @@ require "/scripts/util.lua"
 starPounds = getmetatable ''.starPounds
 
 function init()
-    tabs = root.assetJson("/scripts/corpulence/corpulence_options.config:tabs")
-    curses = root.assetJson("/scripts/corpulence/corpulence_curses.config")
+    tabs = root.assetJson("/scripts/corpulence/corpulence_curses.config:tabs")
+    curses = root.assetJson("/scripts/corpulence/corpulence_curses.config:curses")
+
+    currentTab = nil
+
+    isAdmin = admin()
+
+    weightDecrease:setVisible(isAdmin)
+    weightIncrease:setVisible(isAdmin)
+    enableControls = metagui.inputData.isObject or isAdmin
+    selectedCurse = nil
 
     if starPounds then
         buildTabs()
+        populateCodexTab()
     end
+    resetInfoPanel()
 end
 
 function update()
@@ -21,24 +32,20 @@ function update()
 end
 
 function buildTabs()
-    local firstTab = nil
-
     for _, tab in ipairs(tabs) do
         tab.title = " "
         tab.icon = string.format("icons/tabs/%s.png", tab.id)
         tab.contents = copy(tabField.data.templateTab)
         tab.contents[2].children[2].text = tab.friendlyName
-        tab.contents[2].children[3].id = string.format("panel_%s", tab.id)
+        tab.contents[2].children[4].children[1].id = string.format("panel_%s", tab.id)
 
         local newTab = tabField:newTab(tab)
 
-        if not firstTab then
-            firstTab = newTab
+        if not currentTab then
+            currentTab = newTab
         end
     end
-    firstTab:select()
-
-    populateCodexTab()
+    currentTab:select()
 end
 
 function populateCodexTab()
@@ -63,8 +70,22 @@ function makeCurseWidget(curseKey, curse)
     return curseWidget
 end
 
-function selectCurse()
-    
+function selectCurse(curseKey, curse)
+    local canIncrease = false
+    local canDecrease = false
+    local canUpgrade = false
+    local useToggle = false
+end
+
+function resetInfoPanel()
+    -- effectsPanel:setVisible(true)
+end
+
+function tabField:onTabChanged(tab, previous)
+    if currentTab then
+        currentTab = tab
+        resetInfoPanel()
+    end
 end
 
 function weightDecrease:onClick()

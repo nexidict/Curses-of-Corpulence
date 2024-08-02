@@ -7,8 +7,9 @@
   "uniqueBy": "path",
   "uniqueMode": "toggle",
   "scripts": [ "curses.lua" ],
-  "children": [[
-    {"expandMode": [1, 1]},
+  "children": [
+    [
+      {"expandMode": [1, 1]},
       {
         "type": "tabField",
         "id": "tabField",
@@ -18,41 +19,54 @@
         "data": {
           "templateTab": [
             { "mode": "horizontal" },
-            { 
-              "type": "layout",
-              "mode": "manual",
-              "size": [149, 207],
-              "children": [
-                {
-                  "type": "image",
-                  "noAutoCrop": true,
-                  "file": "leftPanel.png"
-                },
-                {
-                  "text": "Panel Title",
-                  "type": "label",
-                  "align": "center",
-                  "size": [149, 9],
-                  "position": [0, 4]
-                },
-                {
-                  "id": "panel",
-                  "type": "scrollArea",
-                  "scrollDirections": [0, 1],
-                  "scrollBars": true,
-                  "thumbScrolling": true,
-                  "size": [145, 179],
-                  "position": [2, 16],
-                  "children": []
-                }
-              ]
-            },
-            {"type": "panel", "style": "convex", "children": [
-
+            { "type": "panel", "style": "convex", "size": [149, 207], "children": [
+              1,
+              {
+                "text": "Panel Title",
+                "type": "label",
+                "align": "center"
+              },
+              1,
+              {
+                "type": "panel", "style": "concave", "children": [
+                  {
+                    "id": "panel",
+                    "type": "scrollArea",
+                    "scrollDirections": [0, 1],
+                    "scrollBars": true,
+                    "thumbScrolling": true,
+                    "size": [145, 179],
+                    "position": [2, 16],
+                    "children": []
+                  }
+                ]
+              }
             ]}
           ]
         }
-      }
+      },
+      [
+        {"size": [145, 207]},
+        {"type": "panel", "style": "convex", "children": [
+          1,
+          { "id": "detailsIcon", "type": "image", "noAutoScrop": true, "scale": 2, "file": "icons/curses/placeholder.png" },
+          1,
+          { "id": "detailsTitle", "type": "label", "align": "center", "fontSize": 10, "text": "Curse Name" },
+          1,
+          { "id": "detailsDescription", "type": "label", "inline": true, "size": [130, 40], "text": "Curse Description" },
+          1,
+          {"type": "panel", "id": "effectsPanel", "style": "concave", "children": [
+            {
+              "type": "scrollArea",
+              "scrollBars": true,
+              "thumbScrolling": true,
+              "children": [
+               
+              ]
+            }
+          ]}
+        ]}
+      ]
     ],
     [
       "spacer",
