@@ -47,7 +47,8 @@
           1,
           {"id": "detailsTitle", "type": "label", "align": "center", "fontSize": 9.5, "text": "Curse Name"},
           1,
-          {"id": "detailsDescription", "type": "label", "inline": true, "size": [140, 40], "fontSize": 7.5, "text": "Curse Description\nCurse Description\nCurse Description\nCurse Description"}
+          {"id": "tabDescription", "type": "label", "inline": true, "size": [140, 140], "text": "Tab Description"},
+          {"id": "detailsDescription", "type": "label", "inline": true, "size": [140, 40], "fontSize": 7.5, "text": "Curse Description"}
         ]},
         [
           {"type": "layout", "id": "effectsPanel", "mode": "vertical", "children": [
@@ -78,7 +79,8 @@
       {"type": "iconButton", "id": "weightIncrease", "visible": false, "toolTip": "Increase your weight by 1 stage.", "image" : "weightIncrease.png", "hoverImage" : "weightIncrease.png", "pressImage" : "weightIncrease.png?border=1;00000000;00000000?crop=1;2;19;21"},
       {"type": "iconButton", "id": "enable", "toolTip": "Enable or Disable the mod.", "image" : "enabled.png", "hoverImage" : "enabled.png", "pressImage" : "enabled.png?border=1;00000000;00000000?crop=1;2;87;21"},
       {"type": "iconButton", "id": "reset", "toolTip": "Reset the mod.", "image" : "reset.png", "hoverImage" : "reset.png", "pressImage" : "reset.png?border=1;00000000;00000000?crop=1;2;19;21"},
-      "spacer"
+      "spacer",
+      18
     ]
   ]
 }
