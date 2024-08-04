@@ -47,12 +47,17 @@
           1,
           {"id": "detailsTitle", "type": "label", "align": "center", "fontSize": 9.5, "text": "Curse Name"},
           1,
-          {"id": "tabDescription", "type": "label", "inline": true, "size": [140, 140], "text": "Tab Description"},
-          {"id": "detailsDescription", "type": "label", "inline": true, "size": [140, 40], "fontSize": 7.5, "text": "Curse Description"}
+          {"type": "layout", "mode": "horizontal", "size": 140, "position": [4, 0], "children": [
+            [
+              {"mode": "stack"},
+              {"id": "tabDescription", "type": "label", "inline": true, "size": [140, 140], "text": "Tab Description"},
+              {"id": "detailsDescription", "type": "label", "inline": true, "size": [140, 40], "fontSize": 7.5, "text": "Curse Description"}
+            ]
+          ]}
         ]},
         [
           {"type": "layout", "id": "effectsPanel", "mode": "vertical", "children": [
-            {"type": "panel", "visible": true, "expandMode": [1, 0], "size": [0, 97], "style": "convex", "children": [
+            {"type": "panel", "visible": true, "expandMode": [1, 0], "size": [0, 87], "style": "convex", "children": [
               1,
               {"text": "Effects", "type": "label", "align": "center"},
               {"type": "panel", "style": "concave", "children": [
@@ -64,7 +69,7 @@
                 }
               ]}
             ]},
-            {"type": "panel", "id": "curseControls", "style": "convex", "expandMode": [1, 0], "size": [0, 20], "children": [
+            {"type": "panel", "id": "curseControls", "style": "convex", "expandMode": [1, 0], "size": [0, 30], "children": [
               
             ]}
           ]}

@@ -3,17 +3,17 @@ require "/scripts/util.lua"
 starPounds = getmetatable ''.starPounds
 
 function init()
-    tabs = root.assetJson("/scripts/corpulence/corpulence_curses.config:tabs")
-    curses = root.assetJson("/scripts/corpulence/corpulence_curses.config:curses")
+    Tabs = root.assetJson("/scripts/corpulence/corpulence_curses.config:tabs")
+    Curses = root.assetJson("/scripts/corpulence/corpulence_curses.config:curses")
 
-    isAdmin = admin()
+    IsAdmin = admin()
 
     weightDecrease:setVisible(isAdmin)
     weightIncrease:setVisible(isAdmin)
     barPadding:setVisible(not isAdmin)
 
-    enableControls = metagui.inputData.isObject or isAdmin
-    selectedCurse = nil
+    EnableControls = metagui.inputData.isObject or isAdmin
+    SelectedCurseKey = nil
 
     if starPounds then
         buildTabs()
@@ -23,8 +23,8 @@ function init()
 end
 
 function update()
-    if isAdmin ~= admin() then
-        isAdmin = admin()
+    if IsAdmin ~= admin() then
+        IsAdmin = admin()
         weightDecrease:setVisible(isAdmin)
         weightIncrease:setVisible(isAdmin)
         barPadding:setVisible(not isAdmin)
@@ -34,7 +34,7 @@ function update()
 end
 
 function buildTabs()
-    for _, tab in ipairs(tabs) do
+    for _, tab in ipairs(Tabs) do
         tab.title = " "
         tab.icon = string.format("icons/tabs/%s.png", tab.id)
         tab.contents = copy(tabField.data.templateTab)
@@ -53,21 +53,43 @@ function buildTabs()
 end
 
 function populateCodexTab()
-    for curseKey, curse in pairs(curses) do
-        sb.logInfo("Loop: adding "..curseKey)
+    local sortedCurseKeys = {}
+    for curseKey, curse in pairs(Curses) do
+        table.insert(sortedCurseKeys, curseKey)
+    end
+    table.sort(sortedCurseKeys)
+
+    for _, curseKey in ipairs(sortedCurseKeys) do
+        local curse = Curses[curseKey]
         if _ENV["panel_codex"] then
             _ENV["panel_codex"]:addChild(makeCurseWidget(curseKey, curse))
-            sb.logInfo(curseKey.." added")
+            _ENV[string.format("%sCurse", curseKey)].onClick = function() selectCurse(curseKey, curse) end
         end
     end
 end
 
 function makeCurseWidget(curseKey, curse)
+    if not curse then return end
+
     local curseWidget = {
         type = "layout", size = {142, 20}, mode = "manual", children = {
-            { id = string.format("%sCurse_back", curseKey), type = "image", noAutoCrop = true, position = {0, 0}, file = "item.png" },
+            { id = string.format("%sCurse_back", curseKey), type = "image", noAutoCrop = true, position = {0, 0}, file = "unselected.png" },
             { id = string.format("%sCurse_name", curseKey), type = "label", position = {22, 6}, size = {117, 9}, text = curse.friendlyName },
-            { id = string.format("%sCurse_icon", curseKey), type = "image", noAutoCrop = true, position = {2, 2}, file =  "icons/curses/placeholder.png" }
+            { id = string.format("%sCurse_icon", curseKey), type = "image", noAutoCrop = true, position = {2, 2}, file = string.format("icons/curses/%s.png", curseKey) },
+            { id = string.format("%sCurse", curseKey), type = "iconButton", size = {142, 20} }
+        }
+    }
+
+    return curseWidget
+end
+
+function makeCurseWidget(curseKey, curse)
+    local curseWidget = {
+        type = "layout", size = {142, 20}, mode = "manual", children = {
+            { id = string.format("%sCurse_back", curseKey), type = "image", noAutoCrop = true, position = {0, 0}, file = "unselected.png" },
+            { id = string.format("%sCurse_name", curseKey), type = "label", position = {22, 6}, size = {117, 9}, text = curse.friendlyName },
+            { id = string.format("%sCurse_icon", curseKey), type = "image", noAutoCrop = true, position = {2, 2}, file = string.format("icons/curses/%s.png", curseKey) },
+            { id = string.format("%sCurse", curseKey), type = "iconButton", size = {142, 20} }
         }
     }
 
@@ -75,10 +97,30 @@ function makeCurseWidget(curseKey, curse)
 end
 
 function selectCurse(curseKey, curse)
+    effectsPanel:setVisible(true)
     local canIncrease = false
     local canDecrease = false
     local canUpgrade = false
     local useToggle = false
+
+    if SelectedCurseKey and (not curseKey or SelectedCurseKey ~= curseKey) then
+        _ENV[string.format("%sCurse_back", SelectedCurseKey)]:setFile("unselected.png")
+        _ENV[string.format("%sCurse_back", SelectedCurseKey)]:queueRedraw()
+    end
+
+    if curseKey then
+        _ENV[string.format("%sCurse_back", curseKey)]:setFile("selected.png")
+        _ENV[string.format("%sCurse_back", curseKey)]:queueRedraw()
+
+        local icon = string.format("icons/curses/%s.png", curseKey)
+        detailsTitle:setText(curse.friendlyName)
+        tabDescription:setText("")
+        detailsDescription:setText(curse.description)
+        detailsIcon:setFile(icon)
+        detailsIcon:queueRedraw()
+    end
+
+    SelectedCurseKey = curseKey
 end
 
 function resetInfoPanel()
